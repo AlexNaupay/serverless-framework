@@ -1,5 +1,9 @@
 const aws = require("aws-sdk")
 const { randomUUID } = require("crypto")
+const dotenv = require('dotenv');
+const path = require("path");
+
+dotenv.config({path: process.env.NODE_ENV_FILE || path.join(__dirname, '../.env')});
 
 let dynamoDBClientParams = {}
 
@@ -7,8 +11,8 @@ if (process.env.IS_OFFLINE) {
     dynamoDBClientParams =  {
         region: 'localhost',
         endpoint: 'http://localhost:8000',
-        accessKeyId: 'DEFAULT_ACCESS_KEY',  // needed if you don't have aws credentials at all in env
-        secretAccessKey: 'DEFAULT_SECRET' // needed if you don't have aws credentials at all in env
+        accessKeyId: process.env.AWS_ACCESS_KEY,  // needed if you don't have aws credentials at all in env
+        secretAccessKey: process.env.AWS_SECRET_KEY // needed if you don't have aws credentials at all in env
     }
 }
 
