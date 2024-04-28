@@ -9,6 +9,9 @@ provider:
         - Effect: Allow
           Action: 'dynamodb:*'
           Resource: arn:aws:dynamodb:us-east-1:471893938953:table/usersTable
+  environment:
+    S3_BUCKET: "sls-course"
+    STAGE: ${opt:stage, 'staging'}
 
 plugins:
   - serverless-offline

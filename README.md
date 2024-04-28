@@ -14,3 +14,10 @@ sls offline start
 ```bash
 aws configure
 ```
+
+
+### Env vars
+```bash
+sls deploy --stage prod
+```
+
